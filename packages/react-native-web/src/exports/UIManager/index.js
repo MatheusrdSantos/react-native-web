@@ -14,9 +14,9 @@ const getRect = node => {
   // Unlike the DOM's getBoundingClientRect, React Native layout measurements
   // for "height" and "width" ignore scale transforms.
   // https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Determining_the_dimensions_of_elements
-  const { x, y, top, left } = getBoundingClientRect(node);
-  const width = node.offsetWidth;
-  const height = node.offsetHeight;
+  const { x, y, top, left, width: clientWidth, height: clientHeight } = getBoundingClientRect(node);
+  const width = node.offsetWidth || clientWidth;
+  const height = node.offsetHeight || clientHeight;
   return { x, y, width, height, top, left };
 };
 
